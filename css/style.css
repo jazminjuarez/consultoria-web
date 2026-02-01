@@ -1,59 +1,104 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f2f2f2;
-}
+/* =====================================================
+   ESTILOS ADICIONALES - AGREGAR AL FINAL DE style.css
+   ===================================================== */
 
-header {
-  background: #1e1e1e;
-  color: white;
-  padding: 20px;
-}
-
-nav a {
-  color: white;
-  margin-right: 15px;
-  text-decoration: none;
-}
-
-section {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.equipo {
-  display: flex;
-  gap: 30px;
-}
-
-.card {
+/* Alertas del formulario */
+.alert {
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.card img {
-  width: 150px;
-  border-radius: 10px;
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
-form input, form textarea {
+.alert-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Estilos para el select */
+#formContacto select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background: white;
 }
 
-button {
-  background: #1e1e1e;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
+/* Botón de admin en el nav */
+.btn-admin {
+  background: #e74c3c;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 5px;
+  margin-left: 10px;
 }
 
-footer {
-  background: #1e1e1e;
-  color: white;
-  text-align: center;
-  padding: 10px;
+.btn-admin:hover {
+  background: #c0392b;
+}
+
+/* Botón enviar deshabilitado */
+#btnEnviar:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+ RESPONSIVE - Pantallas pequeñas
+ ===================================================== */
+@media (max-width: 768px) {
+  header nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+  }
+  
+  header nav a {
+      padding: 8px 12px;
+  }
+  
+  .equipo {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .card {
+      width: 100%;
+      max-width: 300px;
+  }
+  
+  #formContacto {
+      padding: 0 15px;
+  }
+  
+  #formContacto input,
+  #formContacto select,
+  #formContacto textarea {
+      width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+      font-size: 24px;
+  }
+  
+  section h2 {
+      font-size: 22px;
+  }
+  
+  header nav a {
+      font-size: 14px;
+      padding: 6px 10px;
+  }
 }

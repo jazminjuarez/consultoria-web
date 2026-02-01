@@ -1,21 +1,46 @@
-document.getElementById("formContacto").addEventListener("submit", function(e) {
-  e.preventDefault();
+// =====================================================
+// SCRIPT PARA FORMULARIO DE CONTACTO
+// =====================================================
 
-  let nombre = document.getElementById("nombre").value;
-  let correo = document.getElementById("correo").value;
-  let mensaje = document.getElementById("mensaje").value;
-
-  let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-  usuarios.push({
-    nombre: nombre,
-    correo: correo,
-    mensaje: mensaje,
-    fecha: new Date().toLocaleString()
-  });
-
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-  alert("Datos enviados correctamente");
-  this.reset();
+document.getElementById('formContacto').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const btn = document.getElementById('btnEnviar');
+    const alertSuccess = document.getElementById('alertSuccess');
+    const alertError = document.getElementById('alertError');
+    
+    // Ocultar alertas previas
+    alertSuccess.style.display = 'none';
+    alertError.style.display = 'none';
+    
+    // Mostrar loading
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    
+    try {
+        const formData = new FormData(this);
+        
+        const response = await fetch('procesar_contacto.php', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            alertSuccess.style.display = 'block';
+            this.reset();
+            // Scroll hacia el mensaje
+            alertSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            alertError.textContent = '❌ ' + data.message;
+            alertError.style.display = 'block';
+        }
+    } catch (error) {
+        alertError.textContent = '❌ Error de conexión. Intenta nuevamente.';
+        alertError.style.display = 'block';
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'Enviar';
+    }
 });

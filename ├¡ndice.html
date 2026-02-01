@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Consultoría Web</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 <header>
   <h1>Consultoría Web</h1>
   <nav>
@@ -16,36 +16,32 @@
     <a href="#proyectos">Proyectos</a>
     <a href="#servicios">Servicios</a>
     <a href="#contacto">Contacto</a>
+    <a href="admin/login.php" class="btn-admin">Admin</a>
   </nav>
 </header>
-
 <section id="inicio">
   <h2>Hacemos páginas web profesionales</h2>
   <p>Diseño moderno, funcional y adaptado a cada cliente.</p>
 </section>
-
 <section id="mv">
   <h2>Misión</h2>
   <p>Desarrollar páginas web de calidad que ayuden a crecer a nuestros clientes.</p>
-
   <h2>Visión</h2>
   <p>Ser una consultoría reconocida en desarrollo web.</p>
 </section>
-
 <section id="nosotros">
   <h2>Nosotros</h2>
   <div class="equipo">
     <div class="card">
-      <img src="img/jazmin.jpg" alt="Jazmín">
+      <img src="imagen/jazmin.jpg" alt="Jazmín">
       <p><b>Jazmín Juárez</b><br>Frontend / Diseño</p>
     </div>
     <div class="card">
-      <img src="img/companero.jpg" alt="Compañero">
+      <img src="imagen/companero.jpg" alt="Compañero">
       <p><b>Compañero</b><br>Backend / Base de datos</p>
     </div>
   </div>
 </section>
-
 <section id="proyectos">
   <h2>Proyectos</h2>
   <ul>
@@ -54,7 +50,6 @@
     <li>Sistemas web personalizados</li>
   </ul>
 </section>
-
 <section id="servicios">
   <h2>Servicios</h2>
   <ul>
@@ -63,21 +58,34 @@
     <li>Mantenimiento de sitios</li>
   </ul>
 </section>
-
 <section id="contacto">
   <h2>Contacto</h2>
+  
+  <!-- Mensajes de éxito/error -->
+  <div id="alertSuccess" class="alert alert-success" style="display:none;">
+    ✅ ¡Mensaje enviado! Te hemos enviado un correo de confirmación.
+  </div>
+  <div id="alertError" class="alert alert-error" style="display:none;"></div>
+  
   <form id="formContacto">
-    <input type="text" id="nombre" placeholder="Nombre" required>
-    <input type="email" id="correo" placeholder="Correo" required>
-    <textarea id="mensaje" placeholder="Mensaje"></textarea>
-    <button type="submit">Enviar</button>
+    <input type="text" name="nombre" id="nombre" placeholder="Nombre *" required>
+    <input type="email" name="email" id="correo" placeholder="Correo *" required>
+    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono (opcional)">
+    <select name="servicio" id="servicio">
+      <option value="">-- Selecciona un servicio --</option>
+      <option value="Diseño web">Diseño web</option>
+      <option value="Desarrollo web">Desarrollo web</option>
+      <option value="Mantenimiento de sitios">Mantenimiento de sitios</option>
+      <option value="Tienda en línea">Tienda en línea</option>
+      <option value="Otro">Otro</option>
+    </select>
+    <textarea name="mensaje" id="mensaje" placeholder="Mensaje *" required></textarea>
+    <button type="submit" id="btnEnviar">Enviar</button>
   </form>
 </section>
-
 <footer>
   <p>© 2026 Consultoría Web</p>
 </footer>
-
 <script src="js/script.js"></script>
 </body>
 </html>
